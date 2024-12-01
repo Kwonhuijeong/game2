@@ -19,6 +19,15 @@
 // 스크린 버퍼 선언
 char screenBuffer[HEIGHT][WIDTH + 1];
 
+void Elf2DInitScreen()
+{
+    //커서 숨기기
+    CONSOLE_CURSOR_INFO cursorInfo;
+    GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
+    cursorInfo.bVisible = FALSE;  // 커서를 숨김
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
+}
+
 // 스크린 버퍼 초기화 함수
 void initializeBuffer() {
     for (int y = 0; y < HEIGHT; y++) {
